@@ -4,8 +4,8 @@ LiquidCrystal lcd(3, 4, 5, 6, 7, 8);
 String data;
 String messg;
 String redVal, greenVal, blueVal;
-const byte rPin = 9;
-const byte gPin = 10;
+const byte rPin = 10;
+const byte gPin = 9;
 const byte bPin = 11;
 int first, second, third;
 

@@ -10,6 +10,5 @@ firebase_admin.initialize_app(cred, {
 root = db.reference() 
 def main():
     my_dict = root.get('/')[0]
-    final_string = str(my_dict['red'])+","+str(my_dict['green'])+","+str(my_dict['blue'])+","+my_dict['message']
-    print(final_string)
-main()
+    final_string = str(my_dict['red'])+","+str(my_dict['blue'])+","+str(my_dict['green'])+","+my_dict['message']
+    return final_string
