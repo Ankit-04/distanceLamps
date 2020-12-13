@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@1,300&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 html{
     overflow:hidden;
     color: #1abc9c;
@@ -58,10 +57,9 @@ label{
     color: white;
     background-color: #47D1CC;
 }
-#submit{
-    width: 40vw;
+#submit-button{
+    width: 41vw;
     height: 5vh;
-    margin-left: 5vw;
     margin-top: 3vh;
     font-size: large;
     color: black;

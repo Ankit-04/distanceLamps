@@ -1,26 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Connected over Space</title>
-</head>
-<body>
+  </head>
+
+  <body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
     <p id="title">connected over space</p>
     <form>
-        <p id="title-2">Light up your loved ones day</p>
-        <label for="colorpicker">Choose a color for the lamp:</label>
-        <br>
-        <input type="color" id="colorpicker" value="#0000ff">
-        <br>
-        <br>
-        <label for="message">Enter your message here:</label>
-        <br>
-        <input type= "text" id="message" placeholder="enter a special message" maxlength="16">
-        <br>
-        <br>
-        <input type= "submit" id="submit">
+      <p id="title-2">Light up your loved ones day</p>
+      <label for="colorpicker">Choose a color for the lamp:</label>
+      <br />
+      <input type="color" id="colorpicker" value="#0000ff" />
+      <br />
+      <br />
+      <label for="message">Enter your message here:</label>
+      <br />
+      <input
+        type="text"
+        id="message"
+        placeholder="enter a special message"
+        maxlength="16"
+      />
+      <br />
+      <br />
+      <button type="button" id="submit-button" onclick="writeUserData()">
+        Submit
+      </button>
     </form>
-</body>
+
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+
+    <script>
+      var config = {
+        apiKey: "AIzaSyDO9_t6KAIe3wDFNluuqJKwZ5pPWx8xYX8",
+        authDomain: "sfasdf-e46a2.firebaseapp.com",
+        databaseURL: "https://sfasdf-e46a2-default-rtdb.firebaseio.com",
+        projectId: "sfasdf-e46a2",
+        storageBucket: "sfasdf-e46a2.appspot.com",
+        messagingSenderId: "122067310929",
+        appId: "1:122067310929:web:bc771f9d297d00f3899b70",
+        measurementId: "G-ZWBH205TRE",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(config);
+
+      function hexToR(h) {
+        return parseInt(cutHex(h).substring(0, 2), 16);
+      }
+      function hexToG(h) {
+        return parseInt(cutHex(h).substring(2, 4), 16);
+      }
+      function hexToB(h) {
+        return parseInt(cutHex(h).substring(4, 6), 16);
+      }
+      function cutHex(h) {
+        return h.charAt(0) == "#" ? h.substring(1, 7) : h;
+      }
+
+      function writeUserData() {
+        console.log(firebase);
+        var database = firebase.database();
+        database.ref("/").set({
+          red: hexToR(document.getElementById("colorpicker").value),
+          blue: hexToB(document.getElementById("colorpicker").value),
+          green: hexToG(document.getElementById("colorpicker").value),
+          message: document.getElementById("message").value,
+        });
+        console.log("reached");
+      }
+    </script>
+
+  </body>
 </html>
